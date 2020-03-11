@@ -25,4 +25,7 @@ def employee_form(request):
 
 
 def employee_delete(request):
-    return HttpResponse('Hello there, This is the response emp_delete.')
+    employee = Employee.objects.get(pk.id)
+    employee.delete()
+
+    return redirect('employee_list')
