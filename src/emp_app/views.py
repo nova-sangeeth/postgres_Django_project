@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse, redirect
+from django.shortcuts import render, HttpResponse, redirect, get_list_or_404, get_object_or_404
 from .forms import EmployeeForm
 from .models import *
 # Create your views here.
@@ -29,3 +29,20 @@ def employee_delete(request):
     employee.delete()
 
     return redirect('employee_list')
+
+
+def edit_items(request, pk, Employee, cls):
+    item = get_object_or_404(Employee, pk=pk)
+    if request.method == "POST":
+        form = cls(request.POST, instance=item)
+        if form.is_valid():
+            form.save()
+    else:
+        form = cls(instance=item)
+        return render(request,)
+
+    return render(request, 'empedit.html', {'form': form})
+
+
+def edit_employee(request, pk):
+    return edit_items(request, pk, Employee, EmployeeForm)
