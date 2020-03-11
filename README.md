@@ -1,1 +1,0 @@
-# postgres_Django_project

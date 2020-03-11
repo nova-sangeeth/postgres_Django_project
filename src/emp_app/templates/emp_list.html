@@ -1,0 +1,22 @@
+{% extends 'base.html' %} {% block body %}
+<table>
+  <thead>
+    <td>Full Name</td>
+    <td>Mobile</td>
+    <td>Position</td>
+  </thead>
+
+  <tbody>
+    {% for Employee in employee_list %}
+
+    <tr>
+      <td>{{Employee.fullname}}</td>
+      <td>{{Employee.phone_number}}</td>
+      <td>{{Employee.emp_code}}</td>
+      <td>{{Employee.position}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
