@@ -1,3 +1,17 @@
 {% extends 'base.html' %} {% block body %}
-<h1>submitted !!!</h1>
+
+<a href="{% url 'employee_form' %}" class="btn-success" type="button"
+  >Add Employee</a
+>
+
+<br />
+
+<a href="{% url 'employee_list' %}" class="btn-success" type="button"
+  >List Employee</a
+>
+
+<br />
+
+<a href="/admin" class="btn-success" type="button">Admin</a>
+
 {% endblock %}
