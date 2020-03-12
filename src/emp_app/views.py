@@ -12,37 +12,29 @@ def employee_list(request):
     content = {'employee_list': Employee.objects.all()}
     return render(request, "emp_list.html", content)
 
+# Try the inherited method like the inventory...
 
-def employee_form(request):
+
+def employee_form(request, id=0):
     if request.method == "GET":
-        form = EmployeeForm()
-        return render(request, 'emp_form.html', {'form': form})
+        if id == 0:
+            form = EmployeeForm()
+        else:
+            employee = Employee.objects.get(pk=id)
+            form = EmployeeForm(instance=employee)
+        return render(request, "emp_form.html", {'form': form})
     else:
-        form = EmployeeForm(request.POST)
+        if id == 0:
+            form = EmployeeForm(request.POST)
+        else:
+            employee = Employee.objects.get(pk=id)
+            form = EmployeeForm(request.POST, instance=employee)
         if form.is_valid():
             form.save()
-        return redirect('employee_list')
+        return redirect('/employee/list')
 
 
-def employee_delete(request):
-    employee = Employee.objects.get(pk.id)
+def employee_delete(request, id):
+    employee = Employee.objects.get(pk=id)
     employee.delete()
-
-    return redirect('employee_list')
-
-
-def edit_items(request, pk, Employee, cls):
-    item = get_object_or_404(Employee, pk=pk)
-    if request.method == "POST":
-        form = cls(request.POST, instance=item)
-        if form.is_valid():
-            form.save()
-    else:
-        form = cls(instance=item)
-        return render(request,)
-
-    return render(request, 'empedit.html', {'form': form})
-
-
-def edit_employee(request, pk):
-    return edit_items(request, pk, Employee, EmployeeForm)
+    return redirect('/employee/list')

@@ -1,8 +1,10 @@
 {% extends 'base.html' %} {% block body %}
+<a href="{% url 'addemployee' %}">Add Employee</a>
 <table class="table">
   <thead>
     <td>Full Name</td>
     <td>Mobile</td>
+    <td>emp_code</td>
     <td>Position</td>
   </thead>
 
@@ -14,7 +16,14 @@
       <td>{{Employee.phone_number}}</td>
       <td>{{Employee.emp_code}}</td>
       <td>{{Employee.position}}</td>
+      <td>
+        <a href="{% url 'employee_update' employee.id %}"></a>
+      </td>
+      <td>
+        <a href="">delete</a>
+      </td>
     </tr>
+
     {% endfor %}
   </tbody>
 </table>

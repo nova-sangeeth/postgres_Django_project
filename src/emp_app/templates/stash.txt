@@ -1,0 +1,8 @@
+<td>
+        <a
+          href="{% url 'editemployee' item.pk %}"
+          class="btn btn-success btn-sm"
+          role="button"
+          >Edit</a
+        >
+      </td>
