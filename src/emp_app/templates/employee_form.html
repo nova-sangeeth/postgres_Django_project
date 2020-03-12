@@ -1,7 +1,7 @@
-{% extends 'base.html' %} {% block body %}
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% block body %}
 
 <form method="POST" autocomplete="off">
-  {% csrf_token %} {{ form.as_p }}
+  {% csrf_token %} {{ form|crispy }}
   <button type="submit">Submit</button>
 </form>
 {% endblock %}
