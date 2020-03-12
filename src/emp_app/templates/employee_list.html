@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% block body %}
-<a href="{% url 'addemployee' %}">Add Employee</a>
+
 <table class="table">
   <thead>
     <td>Full Name</td>
@@ -17,10 +17,17 @@
       <td>{{Employee.emp_code}}</td>
       <td>{{Employee.position}}</td>
       <td>
-        <a href="{% url 'employee_update' employee.id %}"></a>
+        <a href="{% url 'employee_update' Employee.id %}">edit</a>
       </td>
       <td>
-        <a href="">delete</a>
+        <form
+          action="{% url 'employee_delete' Employee.id %}"
+          class="form"
+          method="POST"
+        >
+          {% csrf_token %}
+          <button class="btn-danger" type="submit">delete</button>
+        </form>
       </td>
     </tr>
 

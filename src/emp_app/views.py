@@ -9,8 +9,8 @@ def index(request):
 
 
 def employee_list(request):
-    content = {'employee_list': Employee.objects.all()}
-    return render(request, "emp_list.html", content)
+    context = {'employee_list': Employee.objects.all()}
+    return render(request, "employee_list.html", context)
 
 # Try the inherited method like the inventory...
 
@@ -22,7 +22,7 @@ def employee_form(request, id=0):
         else:
             employee = Employee.objects.get(pk=id)
             form = EmployeeForm(instance=employee)
-        return render(request, "emp_form.html", {'form': form})
+        return render(request, "employee_form.html", {'form': form})
     else:
         if id == 0:
             form = EmployeeForm(request.POST)
@@ -31,10 +31,10 @@ def employee_form(request, id=0):
             form = EmployeeForm(request.POST, instance=employee)
         if form.is_valid():
             form.save()
-        return redirect('/employee/list')
+        return redirect('employee_list')
 
 
 def employee_delete(request, id):
-    employee = Employee.objects.get(pk=id)
-    employee.delete()
-    return redirect('/employee/list')
+    employee = Employee.objects.get(pk=id).delete()
+    # employee.delete()
+    return redirect('employee_list')
