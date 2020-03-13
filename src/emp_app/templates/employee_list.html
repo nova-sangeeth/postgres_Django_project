@@ -2,10 +2,22 @@
 
 <table class="table">
   <thead>
-    <td>Full Name</td>
-    <td>Mobile</td>
-    <td>emp_code</td>
-    <td>Position</td>
+    <td><h4>Full Name</h4></td>
+    <td>
+      <h4>emp_code</h4>
+    </td>
+    <td>
+      <h4>Position</h4>
+    </td>
+    <td>
+      <h4>Email</h4>
+    </td>
+    <td>
+      <h4>address</h4>
+    </td>
+    <td>
+      <h4>email</h4>
+    </td>
   </thead>
 
   <tbody>
@@ -16,6 +28,8 @@
       <td>{{Employee.phone_number}}</td>
       <td>{{Employee.emp_code}}</td>
       <td>{{Employee.position}}</td>
+      <td>{{Employee.email_address}}</td>
+      <td>{{Employee.address}}</td>
       <td>
         <a href="{% url 'employee_update' Employee.id %}">edit</a>
       </td>

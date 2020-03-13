@@ -11,4 +11,5 @@ from .models import Position, Employee
 class EmployeeForm(forms.ModelForm):
     class Meta:
         model = Employee
-        fields = ('fullname', 'emp_code', 'phone_number', 'position')
+        fields = ('fullname', 'emp_code', 'phone_number',
+                  'email_address', 'position', 'address')
